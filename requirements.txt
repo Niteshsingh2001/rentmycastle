@@ -4,3 +4,4 @@ pytz
 sqlparse
 whitenoise
 gunicorn
+setuptools==1.0
