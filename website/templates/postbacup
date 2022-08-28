@@ -1,0 +1,108 @@
+
+
+  <!-- 
+
+
+    <!-- </section> -->
+
+
+
+    <style>
+      .outbox {
+        display: grid;
+        align-items: center;
+        justify-items: center;
+        min-height: 85vh;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        background-color: black;
+      }
+    
+      .carousel-item>img {
+        height: 500px;
+        background-attachment: fixed;
+        background-size: auto;
+        padding: 10px;
+      }
+    
+      .card {
+        /* background-color: antiquewhite;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }*/
+        width: 450px;
+        margin: 10px;
+    
+      }
+    
+      .custom {
+        /* height: 550px; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    
+    
+    
+      .FlexContainer {
+        display: inline-flex;
+        /* flex-wrap: nowrap; */
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        /* width: 80%; */
+        /* background-color: #2f1d58; */
+        /* height: 80vh; */
+        /* overflow: auto; */
+        /* flex-direction: row; */
+        flex-direction: row;
+      }
+    
+      .division1 {
+        width: 70%;
+        height: 20%;
+        margin: 5px;
+    
+      }
+    
+      .division2 {
+        /* height: 500px; */
+        /* width: 70%; */
+        /* display: inline-block; */
+    
+        /* vertical-align:top;  */
+        align-self: flex-start;
+        margin: 5px;
+    
+      }
+    
+      @media only screen and (max-width: 1000px) {
+    
+        .FlexContainer {
+          display: flex;
+          /* width: 20%; */
+    
+          flex-direction: column;
+          background-color: aqua;
+        }
+    
+        .division2 {
+          align-self: center;
+          background-color: black;
+          width: 70%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+    
+        }
+    
+        .division1 {
+          align-self: center;
+        }
+    
+        .card {
+          width: 90%;
+        }
+      }
+    </style>

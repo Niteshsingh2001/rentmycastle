@@ -1,0 +1,276 @@
+{% extends 'base.html' %}
+
+{% block css %}
+
+<style>
+  .outbox {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    min-height: 85vh;
+  }
+
+  .cont {
+    width: 80%;
+    padding: 10px;
+
+  }
+
+  /* .img_form {
+    height: 250px;
+    width: 250px;
+    background-color: rgb(176, 29, 44);
+    border-radius: 100%;
+  } */
+
+  @media only screen and (max-width: 800px) {
+    .cont {
+      width: 100%;
+    }
+  }
+
+  .upload_img {
+    max-width: 150px;
+
+  }
+
+  .col_custom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .row_custom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+  @media only screen and (max-width: 800px) {
+
+
+    .card {
+      width: auto;
+    }
+
+    .img {
+      width: auto;
+    }
+
+    .card-body {
+      width: auto;
+    }
+  }
+</style>
+{% endblock css %}
+
+{% block body %}
+<div class="outbox">
+  <div class="cont">
+    <h1>Create Post</h1>
+    <form method="post" action="" enctype="multipart/form-data">
+      {% csrf_token %}
+
+      <div class="row mb-4 row_custom" id="prev">
+
+      </div>
+
+
+      <!-- 2 column grid layout with text inputs for the first and last names -->
+      <div class="row mb-4 row_custom">
+        <div class="col col_custom">
+          <div class="form-outline">
+            <label for="imgInp1" class="btn btn-primary">Browse</label>
+            <input accept="image/*" type="file" name="img1" id="imgInp1" style="visibility:hidden" />
+
+          </div>
+        </div>
+        <div class="col col_custom">
+          <div class="form-outline">
+            <label for="imgInp2" class="btn btn-primary">Browse</label>
+            <input accept="image/*" type="file" name="img2" id="imgInp2" style="visibility:hidden" />
+
+          </div>
+        </div>
+        <div class="col col_custom">
+          <div class="form-outline">
+            <label for="imgInp3" class="btn btn-primary">Browse</label>
+            <input accept="image/*" type="file" name="img3" id="imgInp3" style="visibility:hidden" />
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Text input -->
+      <div class="form-outline mb-4">
+        <input type="text" id="form6Example3" class="form-control" name="title" />
+        <label class="form-label" for="form6Example3">Title</label>
+      </div>
+
+      <!-- Text input -->
+      <div class="form-outline mb-4">
+        <input type="text" id="form6Example4" class="form-control" name="desc" />
+        <label class="form-label" for="form6Example4">Descrption</label>
+      </div>
+
+      <!-- Email input -->
+      <div class="form-outline mb-4">
+        <input type="number" id="form6Example5" class="form-control" name="price" />
+        <label class="form-label" for="form6Example5">Price</label>
+      </div>
+
+
+      <!-- Message input -->
+      <div class="form-outline mb-4">
+        <textarea class="form-control" id="form6Example7" rows="4" name="location"></textarea>
+        <label class="form-label" for="form6Example7">Address</label>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col">
+          <div class="form-outline">
+            <input type="text" id="form6Example5" class="form-control" name="city" />
+            <label class="form-label" for="form6Example5">City</label>
+
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-outline">
+            <input type="text" id="form6Example5" class="form-control" name="state" />
+            <label class="form-label" for="form6Example5">State</label>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Submit button -->
+      <button type="submit" class="btn btn-primary btn-block mb-4">Create</button>
+    </form>
+    <br>
+    <h1>Your Post</h1>
+    {% if user_post == False %}
+    <h3>No Post Yet</h3>
+    
+    {% else %}
+    <div class="outbox">
+      <div class="cont">
+        {% for d in data %}
+
+
+        <div class="card">
+
+          <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+            <div id="carouselExampleSlidesOnly" class="carousel slide" data-mdb-ride="carousel">
+              <div class="carousel-inner">
+
+                <div class="carousel-item active">
+
+                  <img src="{{d.img1.url}}" class="card-img-top"
+                    style="height:500px;background-color: #0b0707; background-attachment: fixed;background-size:auto;" />
+                </div>
+                <div class="carousel-item">
+                  <img src="{{d.img2.url}}" class="card-img-top"
+                    style="height:500px;background-color: #0b0707; background-attachment: fixed;background-size:auto;" />
+                </div>
+                <div class="carousel-item">
+                  <img src="{{d.img3.url}}" class="card-img-top"
+                    style="height:500px;background-color: #0b0707; background-attachment: fixed;background-size: auto;" />
+                </div>
+              </div>
+            </div>
+            <a href="/post/{{d.title}}">
+              <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+            </a>
+          </div>
+          <a href="/post/{{d.title}}" style="color: black;">
+            <div class="card-body">
+              <h5 class="card-title">{{d.title}}</h5>
+
+              <p class="card-text" style="display: flex; align-items: center;justify-content:space-between;">
+                <span><i class="fas fa-map-marker-alt" style="color: #858585;margin-right: 5px;"></i>{{d.location}}</span>
+                <span>₹ {{d.price}}</span>
+              </p>
+              
+
+              <div style="display: flex; align-items: center;justify-content:space-between; margin-top: 20px;">
+                <span>{{d.post_date}}</span>
+                <a href="" style="display: flex; align-items: center; justify-content: flex-end;">
+                  <i class="bi bi-trash-fill" style="color: #858585;margin-right: 5px;"></i>
+              </a>
+                </div>
+            </div>
+           
+          </a>
+        </div><br>
+
+        
+        {% endfor %}
+        {% endif %}
+      </div>
+
+    </div>
+
+
+
+  </div>
+</div>
+</div>
+<script>
+
+
+  imgInp1.onchange = evt => {
+    const [file] = imgInp1.files
+    if (file) {
+      document.getElementById("prev").innerHTML += `    
+          <div class="col">
+              <div class="form-outline">
+                  <img id="sign_prev" src="#" class="upload_img"/>
+              </div>
+          </div>`;
+
+      sign_prev.src = URL.createObjectURL(file);
+    }
+  };
+
+
+  imgInp2.onchange = evt => {
+    const [file] = imgInp2.files
+    if (file) {
+      document.getElementById("prev").innerHTML += `      
+          <div class="col">
+              <div class="form-outline">
+                
+                  <img id="sign_prev2" src="#" class="upload_img" />
+              </div>
+          </div>`;
+
+      sign_prev2.src = URL.createObjectURL(file);
+    }
+  };
+
+
+
+  imgInp3.onchange = evt => {
+    const [file] = imgInp3.files
+    if (file) {
+      document.getElementById("prev").innerHTML += `      
+          <div class="col">
+              <div class="form-outline">
+                
+                  <img id="sign_prev3" src="#" class="upload_img" />
+              </div>
+          </div>`;
+
+      sign_prev3.src = URL.createObjectURL(file);
+    }
+  };
+
+
+</script>
+
+{% endblock body %}
+
+
+{% block js %}{% endblock js %}

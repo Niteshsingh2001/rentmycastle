@@ -1,0 +1,268 @@
+{% extends 'base.html' %}
+
+{% block css %}
+<style>
+  .outbox1 {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    min-height: 85vh;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .outbox2 {
+    display: none;
+  }
+
+  .carousel-item>img {
+    height: 500px;
+    background-attachment: fixed;
+    background-size: auto;
+    padding: 10px;
+  }
+
+  .card_1 {
+    /* background-color: antiquewhite;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }*/
+    width: 450px;
+    margin: 10px;
+
+  }
+
+
+  .custom {
+    /* height: 550px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+
+  .FlexContainer {
+    display: inline-flex;
+    /* flex-wrap: nowrap; */
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: center;
+    /* width: 80%; */
+    /* background-color: #2f1d58; */
+    /* height: 80vh; */
+    /* overflow: auto; */
+    /* flex-direction: row; */
+    flex-direction: row;
+
+  }
+
+  .division1 {
+    width: 70%;
+    height: 20%;
+    margin: 5px;
+
+
+
+  }
+
+  .division2 {
+    /* height: 500px; */
+    /* width: 70%; */
+    /* display: inline-block; */
+
+    /* vertical-align:top;  */
+    /* align-self: flex-start; */
+    margin: 5px;
+
+  }
+
+
+
+  @media only screen and (max-width: 1024px) {
+    .outbox1 {
+      display: none;
+    }
+
+    .outbox2 {
+      display: grid;
+      align-items: center;
+      justify-items: center;
+      min-height: 85vh;
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+
+    .div1 {
+      background-color: burlywood;
+      height: 500px;
+
+    }
+
+    .div2 {
+      background-color: aquamarine;
+      height: 500px;
+
+    }
+
+    .card_inner {
+      /* background-color: blueviolet; */
+      margin-top: 10px;
+      margin-bottom: 10px;
+
+    }
+
+    .cx {
+      background-color: none;
+    }
+
+
+    .img {
+      background-color: aquamarine;
+
+    }
+
+    .card_2 {
+      background-color: none;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+  }
+</style>
+{% endblock css %}
+
+{% block body %}
+<div class="outbox1">
+
+  <section class='FlexContainer'>
+    <div class="division1">
+      <div id="carouselExampleCrossfade" class="carousel slide carousel-fade custom" data-mdb-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-mdb-target="#carouselExampleCrossfade" data-mdb-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-mdb-target="#carouselExampleCrossfade" data-mdb-slide-to="1"
+            aria-label="Slide 2"></button>
+          <button type="button" data-mdb-target="#carouselExampleCrossfade" data-mdb-slide-to="2"
+            aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner" style="width: 800px;">
+          <div class="carousel-item active">
+            <img src="{{data.img1.url}}" class="d-block w-100" />
+          </div>
+          <div class="carousel-item">
+            <img src="{{data.img2.url}}" class="d-block w-100" />
+          </div>
+          <div class="carousel-item">
+            <img src="{{data.img3.url}}" class="d-block w-100" />
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-mdb-target="#carouselExampleCrossfade"
+          data-mdb-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-mdb-target="#carouselExampleCrossfade"
+          data-mdb-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+    <div class="division2"  >
+
+      <div class="card card_1">
+        <div class="card-body">
+          <h5 class="card-title">{{data.title}}</h5>
+          <p class="card-title">{{data.desc}}</p>
+          <p class="card-title">{{data.price}}</p>
+          <p class="card-title">{{data.post_date}} </p>
+
+        </div>
+      </div>
+      <div class="card card_1">
+        <div class="card-body">
+          <h5 class="card-title">Owner</h5>
+          <p class="card-title">{{data.posted_by}}</p>
+          <button type="button" class="btn btn-primary">Contact</button>
+        </div>
+      </div>
+
+    </div>
+</div>
+</div>
+
+<!-- Mobile  -->
+<div class="outbox2">
+
+
+  <div class="card card_2">
+    <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+
+      <div id="carouselCrossfade" class="carousel slide carousel-fade custom" data-mdb-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-mdb-target="#carouselCrossfade" data-mdb-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-mdb-target="#carouselCrossfade" data-mdb-slide-to="1"
+            aria-label="Slide 2"></button>
+          <button type="button" data-mdb-target="#carouselCrossfade" data-mdb-slide-to="2"
+            aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="{{data.img1.url}}" class="d-block w-100" />
+          </div>
+          <div class="carousel-item">
+            <img src="{{data.img2.url}}" class="d-block w-100" />
+          </div>
+          <div class="carousel-item">
+            <img src="{{data.img3.url}}" class="d-block w-100" />
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-mdb-target="#carouselCrossfade" data-mdb-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-mdb-target="#carouselCrossfade" data-mdb-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+      <a>
+        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+      </a>
+    </div>
+
+
+
+    <div class="card-body">
+      <div class="card  card_inner">
+        <div class="card-body">
+          <h5 class="card-title">{{data.title}}</h5>
+          <p class="card-title">{{data.desc}}</p>
+          <p class="card-title">{{data.price}}</p>
+          <p class="card-title">{{data.post_date}} </p>
+
+        </div>
+      </div>
+      <div class="card card_inner">
+        <div class="card-body">
+          <h5 class="card-title">Owner</h5>
+          <p class="card-title">{{data.posted_by}}</p>
+          <button type="button" class="btn btn-primary">Contact</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+</div>
+
+
+
+{% endblock body %}
+
+{% block js %}
+<script>$("#height").height($("#height").height());</script>{% endblock js %}

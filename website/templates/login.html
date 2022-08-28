@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block css %}
+<style>
+  .outbox {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    min-height: 85vh;
+  }
+
+  .cont {
+    display: grid;
+    width: 90%;
+    grid-template-columns: 1fr;
+    column-gap: 100px;
+    place-items: center;
+  }
+
+  .card {
+    margin: 10px;
+    align-items: center;
+    justify-content: center;
+    width: 600px;
+    height: 500px;
+    text-decoration: none;
+    color: black;
+  }
+
+
+  @media only screen and (max-width: 800px) {
+    .cont {
+      width: 100%;
+    }
+
+    .card {
+      width: 300px;
+      height: 400px;
+    }
+  }
+</style>
+{% endblock css %}
+
+{% block body %}
+<div class="outbox">
+  <div class="cont">
+
+    <div class="card">
+      <h3>Log in</h3>
+      <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="user" class="form-label">Username</Address></label>
+          <input type="text" class="form-control" id="user" aria-describedby="Help" name="username">
+          <div id="Help" class="form-text"></div>
+        </div>
+        <div class="mb-3">
+          <label for="InputPassword1" class="form-label">Password</label>
+          <input type="password" class="form-control" id="InputPassword1" name="pass">
+        </div>
+
+        <div style="text-align: center; margin-top: 25px; ">
+          <button type="submit" class="btn btn-primary" style="width: 283.52px;">Log in</button><br>
+          <a href="/signup/"  class="btn btn-outline-primary" style="width: 283.52px; margin-top: 15px;">Sign up</a><br>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+
+</div>
+
+</div>
+
+
+{% endblock body %}
+
+{% block js %}{% endblock js %}
